@@ -1,6 +1,13 @@
-import react from "react";
-
+import react, { useState } from "react";
+import Card from "./Card"
+import axios from "axios";
 const Main=()=>{
+    const [search,setSearch]=useState("");
+    const searchBook=(evt)=>{
+        if(evt.key==="Enter"){
+            console.log("hello");
+        }
+    }
     return(
         <>
         <div className="header">
@@ -10,12 +17,23 @@ const Main=()=>{
             <div className="row2">
                 <h2>Find Your Book</h2>
                 <div className="search">
-                    <input type="text" placeholder="Enter your Book Name" />
+                    <input type="text" placeholder="Enter your Book Name" 
+                    value={search} onChange={e=>setSearch(e.target.value)}
+                    onKeyPress={searchBook}/>
                     <button></button>
                 </div>
                 <img src="./images/bg2.png" alt="" />
             </div>
         </div>
+            <div className="container">
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </div>
         </>
     )
 }
